@@ -1,16 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Number Guessing Game</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
-<body>
-    <h1> Hot and Cold Game</h1>
-    <p1> Current Guess: <span id="current guess">50</span></p1>
-    <p1> Guesses Remaining: <span id="guesses remaining">5</span>></p1>
-    <!-- Add multiple inputs for guesses and display values signaling if hot or cold-->
-    
+<body onload="initialize()">
+    <h1>Number Guessing Game!</h1>
+    <button onclick="addOne();">Add 1</button>
+    <button onclick="subOne();">Subtract 1</button> <br>
+    <button onclick="addFive();">Add 5</button>
+    <button onclick="subFive();">Subtract 5</button> <br>
+    <button onclick="add25();">Add 25</button>
+    <button onclick="sub25();">Subtract 25</button> <br>
+    <button onclick="commitGuess();">Commit your guess!</button>
+    <button onclick="reset();">Reset</button>
+    <div id="result">Current Number: 50</div>
+    <h2>Log of Numbers</h2>
+    <div id="numLog"></div>
+    <script src="script.js"></script>
 </body>
 </html>
