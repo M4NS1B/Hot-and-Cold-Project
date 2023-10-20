@@ -1,9 +1,5 @@
-let outputDiv;
-let targetNum;
-let chosenNum;
-let numGuesses;
-
-function initialize() {
+function initialize(){
+    // Your JavaScript code for initialization
     outputDiv = document.getElementById("numLog");
     outputDiv.innerHTML = "";
     outputDiv = document.getElementById("result");
@@ -12,23 +8,99 @@ function initialize() {
     numGuesses = 5;
 }
 
-function commitGuess() {
+// Determines how close the guess is to the actual target.
+function commitGuess(){
     outputDiv = document.getElementById("result");
-    // Your JavaScript code for commitGuess function here...
+    if(chosenNum == targetNum){
+        outputDiv.innerHTML = "Congrats, you found the hidden number!";
+    } else if(chosenNum >= targetNum - 5 && chosenNum <= targetNum + 5){
+        outputDiv.innerHTML = "Your number is Very Hot, guess again.";
+    } else if(chosenNum >= targetNum - 8 && chosenNum <= targetNum + 8){
+        numGuesses--;
+        if(numGuesses < 1){
+            outputDiv.innerHTML = "Oh no!, you ran out of guesses. The secret number was " + targetNum + ".";
+        } else {
+            outputDiv.innerHTML = "Your number is Hot, you have " + numGuesses + " guesses left.";
+        }
+    } else if(chosenNum >= targetNum - 15 && chosenNum <= targetNum + 15){
+        numGuesses--;
+        if(numGuesses < 1){
+            outputDiv.innerHTML = "Oh no!, you ran out of guesses. The secret number was " + targetNum + ".";
+        } else {
+            outputDiv.innerHTML = "Your number is Very Warm, you have " + numGuesses + " guesses left.";
+        }
+    } else if(chosenNum >= targetNum - 20 && chosenNum <= targetNum + 20){
+        numGuesses--;
+        if(numGuesses < 1){
+            outputDiv.innerHTML = "Oh no!, you ran out of guesses. The secret number was " + targetNum + ".";
+        } else {
+            outputDiv.innerHTML = "Your number is Warm, you have " + numGuesses + " guesses left.";
+        }
+    } else if(chosenNum >= targetNum - 30 && chosenNum <= targetNum + 30){
+        numGuesses--;
+        if(numGuesses < 1){
+            outputDiv.innerHTML = "Oh no!, you ran out of guesses. The secret number was " + targetNum + ".";
+        } else {
+            outputDiv.innerHTML = "Your number is Cool, you have " + numGuesses + " guesses left.";
+        }
+    } else if(chosenNum >= targetNum - 40 && chosenNum <= targetNum + 40){
+        numGuesses--;
+        if(numGuesses < 1){
+            outputDiv.innerHTML = "Oh no!, you ran out of guesses. The secret number was " + targetNum + ".";
+        } else {
+            outputDiv.innerHTML = "Your number is Very Cool, you have " + numGuesses + " guesses left.";
+        }
+    } else if(chosenNum >= targetNum - 50 && chosenNum <= targetNum + 50){
+        numGuesses--;
+        if(numGuesses < 1){
+            outputDiv.innerHTML = "Oh no!, you ran out of guesses. The secret number was " + targetNum + ".";
+        } else {
+            outputDiv.innerHTML = "Your number is Cold, you have " + numGuesses + " guesses left.";
+        }
+    } else {
+        numGuesses--;
+        if(numGuesses < 1){
+            outputDiv.innerHTML = "Oh no!, you ran out of guesses. The secret number was " + targetNum + ".";
+        } else {
+            outputDiv.innerHTML = "Your number is Very Cold, you have " + numGuesses + " guesses left.";
+        }
+    }
+    logNum();
 }
 
-function logNum() {
+// Logs the guessed number, the accuracy of the guess, and the number of guesses remaining 
+function logNum(){
     outputDiv = document.getElementById("numLog");
-    // Your JavaScript code for logNum function here...
+    if(chosenNum == targetNum){
+        outputDiv.innerHTML += chosenNum + ", Target Number, " + numGuesses + " guesses remaining.  |  ";
+    } else if(chosenNum >= targetNum - 5 && chosenNum <= targetNum + 5){
+        outputDiv.innerHTML += chosenNum + ", Very Hot, " + numGuesses + " guesses remaining.  |  ";
+    } else if(chosenNum >= targetNum - 8 && chosenNum <= targetNum + 8){
+        outputDiv.innerHTML += chosenNum + ", Hot, " + numGuesses + " guesses remaining.  |  ";
+    } else if(chosenNum >= targetNum - 15 && chosenNum <= targetNum + 15){
+        outputDiv.innerHTML += chosenNum + ", Very Warm, " + numGuesses + " guesses remaining.  |  ";
+    } else if(chosenNum >= targetNum - 20 && chosenNum <= targetNum + 20){
+        outputDiv.innerHTML += chosenNum + ", Warm, " + numGuesses + " guesses remaining.  |  ";
+    } else if(chosenNum >= targetNum - 30 && chosenNum <= targetNum + 30){
+        outputDiv.innerHTML += chosenNum + ", Cool, " + numGuesses + " guesses remaining.  |  ";
+    } else if(chosenNum >= targetNum - 40 && chosenNum <= targetNum + 40){
+        outputDiv.innerHTML += chosenNum + ", Very Cool, " + numGuesses + " guesses remaining.  |  ";
+    } else if(chosenNum >= targetNum - 50 && chosenNum <= targetNum + 50){
+        outputDiv.innerHTML += chosenNum + ", Cold, " + numGuesses + " guesses remaining.  |  ";
+    } else {
+        outputDiv.innerHTML += chosenNum + ", Very Cold, " + numGuesses + " guesses remaining.  |  ";
+    }
 }
 
-function reset() {
+// Deleted all history in the log, all guesses are restored, and a new number is generated
+function reset(){
     initialize();
     outputDiv.innerHTML = "All guesses and attempts reset! Find the new target number."
 }
 
-function addOne() {
-    if (chosenNum + 1 > 100) {
+// Functions that add/subtract in order to choose a number
+function addOne(){
+    if(chosenNum + 1 > 100){
         chosenNum = 100;
     } else {
         chosenNum++;
@@ -36,8 +108,8 @@ function addOne() {
     outputDiv.innerHTML = "Current Number: " + chosenNum;
 }
 
-function subOne() {
-    if (chosenNum - 1 < 1) {
+function subOne(){
+    if(chosenNum - 1 < 1){
         chosenNum = 1;
     } else {
         chosenNum--;
@@ -45,8 +117,8 @@ function subOne() {
     outputDiv.innerHTML = "Current Number: " + chosenNum;
 }
 
-function addFive() {
-    if (chosenNum + 5 > 100) {
+function addFive(){
+    if(chosenNum + 5 > 100){
         chosenNum = 100;
     } else {
         chosenNum += 5;
@@ -54,8 +126,8 @@ function addFive() {
     outputDiv.innerHTML = "Current Number: " + chosenNum;
 }
 
-function subFive() {
-    if (chosenNum - 5 < 1) {
+function subFive(){
+    if(chosenNum - 5 < 1){
         chosenNum = 1;
     } else {
         chosenNum -= 5;
@@ -63,27 +135,22 @@ function subFive() {
     outputDiv.innerHTML = "Current Number: " + chosenNum;
 }
 
-function add25() {
-    if (chosenNum + 25 > 100) {
+function add25(){
+    if(chosenNum + 25 > 100){
         chosenNum = 100;
     } else {
-        chosenNum += 25;
+    chosenNum += 25;
     }
+    
     outputDiv.innerHTML = "Current Number: " + chosenNum;
-}
-
-function sub25() {
-    if (chosenNum - 25 < 1) {
-        chosenNum = 1;
-    } else {
-        chosenNum -= 25;
     }
-    outputDiv.innerHTML = "Current Number: " + chosenNum;
-}
-
-function commitGuess() {
-    console.log("Commit Guess function called");
-    console.log("chosenNum: " + chosenNum + ", targetNum: " + targetNum);
-    // ... rest of your code
-}
+    function sub25(){
+            if(chosenNum - 25 < 1){
+                chosenNum = 1;
+            } else {
+                chosenNum -= 25;
+            }
+            outputDiv.innerHTML = "Current Number: " + chosenNum;
+        }
+    </script>
 
